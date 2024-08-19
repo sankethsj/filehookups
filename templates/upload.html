@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Hookups</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <h1 class="page-title">File Hookups &#128216;</h1>
+
+    <div class="container">
+
+        <div class="upload-container">
+            <h2>Upload a File</h2>
+            <form id="upload-form" action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+                <label for="file-input" class="upload-label">Choose File</label>
+                <input type="file" id="file-input" name="file" class="file-input" onchange="displayFileName()">
+                <span id="file-name" class="file-name"></span>
+                <input type="submit" value="Upload" class="upload-submit-btn" id="upload-submit-btn">
+            </form>
+        </div>
+
+        <div class="download-container">
+            <h2>Download a File</h2>
+            <form id="download-form" action="{{ url_for('download_file') }}" method="POST">
+                <input type="text" id="download-code" name="download-code" required placeholder="Enter the file download code">
+                <input type="submit" value="Download" class="download-submit-btn" id="download-submit-btn">
+            </form>
+        </div>
+    </div>
+
+    <div class="backlight" id="backlight">
+        <div class="output" id="output">
+            <div id="response-message" class="response-message"></div>
+            <div id="error-message" class="error-message"></div>
+            <div id="filecode-message" class="filecode-message"></div>
+            <div class="close-btn" onclick="closeBacklight()">X</div>
+        </div>
+        
+    </div>
+
+    <footer>Use this website at your own risk. This is a demo project; do not upload sensitive files. We do not guarantee the security of your uploads.</footer>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+
+</body>
+</html>
