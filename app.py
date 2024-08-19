@@ -62,8 +62,6 @@ def download_file():
     download_code = request.form.get('download-code')
 
     file_path, filename = find_my_file(UPLOAD_FOLDER, download_code)
-    print("file_path", file_path)
-    print("filename", filename)
 
     if (file_path is None) or (filename is None):
         return {
